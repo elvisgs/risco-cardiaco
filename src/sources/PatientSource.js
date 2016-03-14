@@ -1,6 +1,6 @@
 import PatientActions from '../actions/PatientActions'
 
-var patient = {
+const patient = {
   birthday: '21-08-1954',
   age: 61,
   gender: 'male',
@@ -8,43 +8,40 @@ var patient = {
   lastName: 'Couves',
   tcl: 143,
   hdl: 31,
-  ldl: patient.tcl - patient.hdl,
+  ldl: 112,
   sbp: 120,
   smoker: false,
   diabetes: false,
   trtbp: false
 };
 
-var PatientSource = {
-  fetchPatient() {
-    return {
-      remote() {
-        return new Promise(function (resolve, reject) {
-          // simulate an asynchronous flow where data is fetched on
-          // a remote server somewhere.
-          setTimeout(function () {
+const PatientSource = {
+  fetchPatient: {
+    remote(state) {
+      return new Promise(function (resolve, reject) {
+        // simulate an asynchronous flow where data is fetched on
+        // a remote server somewhere.
+        setTimeout(function () {
 
-            // change this to `false` to see the error action being handled.
-            if (true) {
-              // resolve with some mock data
-              resolve(patient);
-            } else {
-              reject('Things have broken');
-            }
-          }, 1000);
-        });
-      },
+          // change this to `false` to see the error action being handled.
+          if (true) {
+            // resolve with some mock data
+            resolve(patient);
+          } else {
+            reject('Things have broken');
+          }
+        }, 1000);
+      });
+    },
 
-      local() {
-        // Never check locally, always fetch remotely.
-        return null;
-      },
+    local(state) {
+      return patient;
+    },
 
-      success: PatientActions.updatePatient,
-      error: PatientActions.PatientFailed,
-      loading: PatientActions.fetchPatient
-    }
+    success: PatientActions.showPatient,
+    error: PatientActions.PatientFailed,
+    loading: PatientActions.fetchPatient
   }
 };
 
-module.exports = PatientSource;
+export default PatientSource;

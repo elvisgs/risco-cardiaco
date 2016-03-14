@@ -9,13 +9,10 @@ module.exports = {
   target: 'web',
   cache: true,
   entry: {
-    app: path.join(srcPath, 'app.js'),
-    common: ['react', 'alt']
-  },
-  resolve: {
-    root: srcPath,
-    extensions: ['', '.js'],
-    modulesDirectories: ['node_modules', 'src']
+    app: [
+      'webpack/hot/only-dev-server',
+      path.join(srcPath, 'app.jsx')
+    ]
   },
   output: {
     path: path.join(__dirname, 'tmp'),
@@ -23,14 +20,17 @@ module.exports = {
     filename: '[name].js',
     pathInfo: true
   },
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
+    modulesDirectories: ['node_modules', 'src']
+  },
 
   module: {
     loaders: [
-      {test: /\.js?$/, exclude: /node_modules/, loader: 'babel?cacheDirectory'}
+      {test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel?cacheDirectory'}
     ]
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin('common', 'common.js'),
     new HtmlWebpackPlugin({
       inject: true,
       template: 'src/index.html'
@@ -39,7 +39,7 @@ module.exports = {
   ],
 
   debug: true,
-  devtool: 'eval-cheap-module-source-map',
+  devtool: 'cheap-module-source-map',
   devServer: {
     contentBase: './tmp',
     historyApiFallback: true
