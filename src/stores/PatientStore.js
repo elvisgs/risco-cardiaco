@@ -21,16 +21,32 @@ class PatientStore {
   constructor() {
     this.state = {patient};
 
-    this.bindListeners({
-      showPatient: PatientActions.SHOW_PATIENT
-    });
-
-    this.registerAsync(PatientSource);
+    this.bindActions(PatientActions);
   }
 
   showPatient(patient) {
     this.setState({patient});
     this.errorMessage = null;
+  }
+
+  setHypertensionTreatment(value) {
+    patient.trtbp = value;
+    this.setState({patient});
+  }
+
+  setSmoker(value) {
+    patient.smoker = value;
+    this.setState({patient});
+  }
+
+  setDiabetes(value) {
+    patient.diabetes = value;
+    this.setState({patient});
+  }
+
+  setSistolicBloodPressure(value) {
+    patient.sbp = parseInt(value, 10);
+    this.setState({patient});
   }
 }
 

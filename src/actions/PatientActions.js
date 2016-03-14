@@ -1,9 +1,12 @@
 import alt from '../alt'
 
-class PatientActions {
-  showPatient(patient) {
-    return patient;
-  }
-}
+let patientActions = alt.generateActions(
+  'showPatient',
+  'setHypertensionTreatment',
+  'setSmoker',
+  'setDiabetes',
+  'setSistolicBloodPressure'
+);
 
-export default alt.createActions(PatientActions);
+window.patientActions = patientActions;
+export default patientActions;
