@@ -11,14 +11,18 @@ import AndNow from './AndNow';
 class CardiacRisk extends Component {
   render() {
     return (
-      <AltContainer store={PatientStore}>
-        <PatientInfo />
-        <AditionalParameters />
+      <div>
+        <div className='row'>
+          <div className='columns'>
+            <PatientInfo />
+            <AditionalParameters />
+          </div>
+        </div>
         <AboutTest />
-        <Results />
-        <Risk />
+        <AltContainer store={PatientStore} component={Results} />
+        <AltContainer store={PatientStore} component={Risk} />
         <AndNow />
-      </AltContainer>
+      </div>
   );
   }
 }

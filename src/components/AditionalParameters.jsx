@@ -1,7 +1,9 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PatientActions from '../actions/PatientActions';
+import BaseComponent from './BaseComponent';
+import connectToStores from 'alt-utils/lib/connectToStores';
 
-class AditionalParameters extends Component {
+class AditionalParameters extends BaseComponent {
   onHypertensionTreatmentChange(event) {
     PatientActions.setHypertensionTreatment(event.target.checked);
   }
@@ -22,7 +24,7 @@ class AditionalParameters extends Component {
     const {trtbp, smoker, diabetes, sbp} = this.props.patient;
 
     return (
-      <div>
+      <div className='column params'>
         <label>
           <input type='checkbox' defaultChecked={trtbp} onChange={this.onHypertensionTreatmentChange} />
           Faz tratamento de hipertensão?
@@ -35,11 +37,11 @@ class AditionalParameters extends Component {
           <input type='checkbox' defaultChecked={diabetes} onChange={this.onDiabetesChange} />
           Tem diabetes?
         </label><br/>
-        <input id='sbp' defaultValue={sbp} onChange={this.onSistolicBloodPressureChange} />
+        <input type='text' id='sbp' defaultValue={sbp} onChange={this.onSistolicBloodPressureChange} />
         <label htmlFor='sbp'>Pressão arterial sistólica</label>
       </div>
     );
   }
 }
 
-export default AditionalParameters;
+export default connectToStores(AditionalParameters);

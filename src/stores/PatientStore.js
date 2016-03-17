@@ -32,7 +32,7 @@ class PatientStore {
   doCalculations() {
     let risk = calcRisk(patient);
     let heartAge = calcHeartAge(risk, patient.gender);
-    patient.risk = Math.round(risk * 1000) / 10;
+    patient.risk = (Math.round(risk * 1000) / 10).toFixed(1);
     patient.heartAge = Math.round(heartAge);
   }
 

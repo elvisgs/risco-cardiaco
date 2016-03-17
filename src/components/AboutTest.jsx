@@ -7,9 +7,9 @@ export default class AboutTest extends Component {
 
   render() {
     return (
-      <div>
+      <div className='row'>
         <h2>
-          <span>1</span>Sobre esse teste
+          <span className='num'>1</span>Sobre esse teste
         </h2>
         <p>Este relatório avalia o seu potencial risco de doença cardíaca, ataque cardíaco e acidente vascular cerebral.</p>
       </div>

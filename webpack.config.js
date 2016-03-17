@@ -2,6 +2,7 @@
 
 var webpack = require('webpack'),
   HtmlWebpackPlugin = require('html-webpack-plugin'),
+  ExtractTextPlugin = require('extract-text-webpack-plugin'),
   path = require('path'),
   srcPath = path.join(__dirname, 'src');
 
@@ -21,13 +22,25 @@ module.exports = {
     pathInfo: true
   },
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['', '.js', '.jsx', '.sass', '.scss'],
     modulesDirectories: ['node_modules', 'src']
   },
 
   module: {
     loaders: [
-      {test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel?cacheDirectory'}
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel?cacheDirectory'
+      },
+      {
+        test: /\.s(a|c)ss$/,
+        loader: ExtractTextPlugin.extract('style', 'css!sass')
+      },
+      {
+        test: /\.(jpg|png)$/,
+        loader: 'url?limit=5000'
+      }
     ]
   },
   plugins: [
@@ -35,6 +48,7 @@ module.exports = {
       inject: true,
       template: 'src/index.html'
     }),
+    new ExtractTextPlugin('[name].css'),
     new webpack.NoErrorsPlugin()
   ],
 
