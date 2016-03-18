@@ -30,7 +30,7 @@ function calculate_age(dob) {
   return age;
 }
 
-const smart = window.smart = fhir.client({
+const smart = fhir.client({
   serviceUrl: "https://fhir-open-api-dstu2.smarthealthit.org",
   patientId: "1137192"
 });

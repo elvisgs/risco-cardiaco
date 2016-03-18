@@ -4,6 +4,7 @@
   "description": "Vizualização de risco cardíaco",
   "scripts": {
     "build": "webpack --progress --profile --colors",
+    "dist": "set NODE_ENV=production && webpack --progress --profile --colors",
     "watch": "webpack-dev-server --hot --inline --progress --colors"
   },
   "author": "Elvis Guimaraes <elvis.gs@gmail.com>",

@@ -6,14 +6,15 @@ var webpack = require('webpack'),
     path = require('path'),
     srcPath = path.join(__dirname, 'src');
 
+var isProduction = function () {
+  return process.env.NODE_ENV === 'production';
+};
+
 module.exports = {
   target: 'web',
   cache: true,
   entry: {
-    app: [
-      'webpack/hot/only-dev-server',
-      path.join(srcPath, 'app.jsx')
-    ]
+    app: path.join(srcPath, 'app.jsx')
   },
   output: {
     path: path.join(__dirname, 'tmp'),
@@ -55,8 +56,8 @@ module.exports = {
     new webpack.NoErrorsPlugin()
   ],
 
-  debug: true,
-  devtool: 'cheap-module-source-map',
+  debug: !isProduction(),
+  devtool: !isProduction() ? 'cheap-module-source-map' : '',
   devServer: {
     contentBase: './tmp',
     historyApiFallback: true
