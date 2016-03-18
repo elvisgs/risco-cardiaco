@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import AltContainer from 'alt-container';
+import connectToStores from 'alt-utils/lib/connectToStores';
 import PatientStore from '../stores/PatientStore';
 import PatientInfo from './PatientInfo';
 import AditionalParameters from './AditionalParameters';
@@ -9,22 +9,39 @@ import Risk from './Risk';
 import AndNow from './AndNow';
 
 class CardiacRisk extends Component {
+  componentWillMount() {
+    PatientStore.fetchPatient();
+  }
+
+  static getStores() {
+    return [PatientStore];
+  }
+
+  static getPropsFromStores() {
+    return PatientStore.getState();
+  }
+
   render() {
+    if (PatientStore.isLoading())
+      return <div className='loading'>Carregando...</div>;
+
+    const patient = this.props.patient;
+
     return (
       <div>
         <div className='row'>
           <div className='columns'>
-            <PatientInfo />
-            <AditionalParameters />
+            <PatientInfo patient={patient} />
+            <AditionalParameters patient={patient} />
           </div>
         </div>
         <AboutTest />
-        <AltContainer store={PatientStore} component={Results} />
-        <AltContainer store={PatientStore} component={Risk} />
-        <AndNow />
+        <Results patient={patient} />
+        <Risk patient={patient} />
+        <AndNow patient={patient} />
       </div>
-  );
+    )
   }
 }
 
-export default CardiacRisk;
+export default connectToStores(CardiacRisk);

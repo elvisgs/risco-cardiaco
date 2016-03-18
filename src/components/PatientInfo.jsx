@@ -1,8 +1,6 @@
-import React from 'react';
-import BaseComponent from './BaseComponent';
-import connectToStores from 'alt-utils/lib/connectToStores';
+import React, {Component} from 'react';
 
-class PatientInfo extends BaseComponent {
+class PatientInfo extends Component {
   componentWillUpdate(nextProps, nextState) {
     return false;
   }
@@ -27,4 +25,4 @@ class PatientInfo extends BaseComponent {
   }
 }
 
-export default connectToStores(PatientInfo);
+export default PatientInfo;

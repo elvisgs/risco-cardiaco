@@ -5,8 +5,9 @@ let patientActions = alt.generateActions(
   'setHypertensionTreatment',
   'setSmoker',
   'setDiabetes',
-  'setSistolicBloodPressure'
+  'setSistolicBloodPressure',
+  'fetchError',
+  'loading'
 );
 
-window.patientActions = patientActions;
 export default patientActions;

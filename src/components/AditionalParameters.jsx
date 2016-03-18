@@ -1,9 +1,7 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PatientActions from '../actions/PatientActions';
-import BaseComponent from './BaseComponent';
-import connectToStores from 'alt-utils/lib/connectToStores';
 
-class AditionalParameters extends BaseComponent {
+class AditionalParameters extends Component {
   onHypertensionTreatmentChange(event) {
     PatientActions.setHypertensionTreatment(event.target.checked);
   }
@@ -44,4 +42,4 @@ class AditionalParameters extends BaseComponent {
   }
 }
 
-export default connectToStores(AditionalParameters);
+export default AditionalParameters;

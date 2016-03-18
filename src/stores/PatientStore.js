@@ -3,66 +3,51 @@ import PatientActions from '../actions/PatientActions';
 import PatientSource from '../sources/PatientSource';
 import {calcHeartAge, calcRisk} from '../util/lipidCalc';
 
-const patient = {
-  birthday: '21-08-1954',
-  age: 61,
-  gender: 'male',
-  firstName: 'João',
-  lastName: 'Couves',
-  tcl: 143,
-  hdl: 31,
-  ldl: 112,
-  sbp: 120,
-  smoker: false,
-  diabetes: false,
-  trtbp: false,
-  heartAge: 0,
-  risk: 0
-};
-
 class PatientStore {
   constructor() {
-    this.doCalculations();
-
-    this.state = {patient};
-
     this.bindActions(PatientActions);
+    this.registerAsync(PatientSource);
   }
 
   doCalculations() {
-    let risk = calcRisk(patient);
-    let heartAge = calcHeartAge(risk, patient.gender);
-    patient.risk = (Math.round(risk * 1000) / 10).toFixed(1);
-    patient.heartAge = Math.round(heartAge);
+    let risk = calcRisk(this.patient);
+    let heartAge = calcHeartAge(risk, this.patient.gender);
+    this.patient.risk = (Math.round(risk * 1000) / 10).toFixed(1);
+    this.patient.heartAge = Math.round(heartAge);
   }
 
   showPatient(patient) {
-    this.setState({patient});
-    this.errorMessage = null;
+    this.patient = patient;
+    this.doCalculations();
+    this.setState({patient: this.patient});
   }
 
   setHypertensionTreatment(value) {
-    patient.trtbp = value;
+    this.patient.trtbp = value;
     this.doCalculations();
-    this.setState({patient});
+    this.setState({patient: this.patient});
   }
 
   setSmoker(value) {
-    patient.smoker = value;
+    this.patient.smoker = value;
     this.doCalculations();
-    this.setState({patient});
+    this.setState({patient: this.patient});
   }
 
   setDiabetes(value) {
-    patient.diabetes = value;
+    this.patient.diabetes = value;
     this.doCalculations();
-    this.setState({patient});
+    this.setState({patient: this.patient});
   }
 
   setSistolicBloodPressure(value) {
-    patient.sbp = parseInt(value, 10);
+    this.patient.sbp = parseInt(value, 10);
     this.doCalculations();
-    this.setState({patient});
+    this.setState({patient: this.patient});
+  }
+
+  fetchError(errorMessage) {
+    alert(errorMessage);
   }
 }
 

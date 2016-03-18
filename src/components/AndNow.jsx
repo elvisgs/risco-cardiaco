@@ -1,12 +1,10 @@
-import React from 'react';
-import BaseComponent from './BaseComponent';
-import connectToStores from 'alt-utils/lib/connectToStores';
+import React, {Component} from 'react';
 import runnerImg from 'img/runner.png'
 import smokerImg from 'img/smoker.png'
 import doctorImg from 'img/doctor.png'
 import needleImg from 'img/needle.png'
 
-class AndNow extends BaseComponent {
+class AndNow extends Component {
   render() {
     let {smoker} = this.props.patient;
     let smokerTipTitle = smoker ? 'Parar de fumar' : 'Continuar sem fumar';
@@ -44,4 +42,4 @@ class AndNow extends BaseComponent {
   }
 }
 
-export default connectToStores(AndNow);
+export default AndNow;

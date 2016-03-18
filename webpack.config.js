@@ -1,10 +1,10 @@
 'use strict';
 
 var webpack = require('webpack'),
-  HtmlWebpackPlugin = require('html-webpack-plugin'),
-  ExtractTextPlugin = require('extract-text-webpack-plugin'),
-  path = require('path'),
-  srcPath = path.join(__dirname, 'src');
+    HtmlWebpackPlugin = require('html-webpack-plugin'),
+    ExtractTextPlugin = require('extract-text-webpack-plugin'),
+    path = require('path'),
+    srcPath = path.join(__dirname, 'src');
 
 module.exports = {
   target: 'web',
@@ -24,6 +24,9 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx', '.sass', '.scss'],
     modulesDirectories: ['node_modules', 'src']
+  },
+  externals: {
+    jsdom: 'jsdom' // fix fhir-client error
   },
 
   module: {

@@ -10,9 +10,10 @@
   "license": "MIT",
   "dependencies": {
     "alt": "^0.18.2",
-    "alt-container": "^1.0.2",
     "alt-utils": "^1.0.0",
     "bulma": "0.0.16",
+    "fhir-js-client": "^1.0.0",
+    "jquery": "^2.2.2",
     "object-assign": "^4.0.1",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
@@ -40,6 +41,7 @@
     "risco",
     "cardiaco",
     "smart",
-    "fhir"
+    "fhir",
+    "framingham"
   ]
 }
