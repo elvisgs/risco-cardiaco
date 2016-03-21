@@ -11,6 +11,12 @@ import AndNow from './AndNow';
 class CardiacRisk extends Component {
   componentWillMount() {
     PatientStore.fetchPatient();
+    this.toggleTitle();
+  }
+
+  toggleTitle() {
+    if (window.location.href.contains('notitle'))
+      document.getElementById('risk-title').remove();
   }
 
   static getStores() {
