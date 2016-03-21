@@ -91,7 +91,7 @@ const PatientSource = {
         }
 
         const res = {
-          birthday: dob.toLocaleFormat('%d-%m-%Y'),
+          birthday: dob.toLocaleDateString(),
           age: age,
           gender: gender,
           firstName: fname,

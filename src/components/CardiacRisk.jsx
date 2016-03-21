@@ -15,7 +15,7 @@ class CardiacRisk extends Component {
   }
 
   toggleTitle() {
-    if (window.location.href.contains('notitle'))
+    if (window.location.href.indexOf('notitle') >= 0)
       document.getElementById('risk-title').remove();
   }
 
