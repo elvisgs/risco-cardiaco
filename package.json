@@ -14,7 +14,6 @@
     "alt-utils": "^1.0.0",
     "bulma": "0.0.16",
     "fhir-js-client": "^1.0.0",
-    "jquery": "^2.2.2",
     "object-assign": "^4.0.1",
     "query-string": "^3.0.3",
     "react": "^0.14.7",
