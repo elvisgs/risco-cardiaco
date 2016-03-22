@@ -27,6 +27,7 @@ var config = {
     modulesDirectories: ['node_modules', 'src']
   },
   externals: {
+    jquery: 'jQuery',
     jsdom: 'jsdom' // fix fhir-client error
   },
 
