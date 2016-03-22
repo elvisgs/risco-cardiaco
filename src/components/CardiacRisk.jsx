@@ -7,6 +7,7 @@ import AboutTest from './AboutTest';
 import Results from './Results';
 import Risk from './Risk';
 import AndNow from './AndNow';
+import qs from 'query-string';
 
 class CardiacRisk extends Component {
   componentWillMount() {
@@ -15,7 +16,8 @@ class CardiacRisk extends Component {
   }
 
   toggleTitle() {
-    if (window.location.href.indexOf('notitle') >= 0)
+    const params = qs.parse(window.location.search);
+    if (params.hasOwnProperty('notitle'))
       document.getElementById('risk-title').remove();
   }
 

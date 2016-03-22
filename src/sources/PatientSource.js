@@ -1,6 +1,7 @@
 import PatientActions from '../actions/PatientActions'
 import $ from 'jquery';
 import fhir from '../util/fhir-client-cjs';
+import qs from 'query-string';
 
 /**
 * Unit conversion formula.
@@ -30,9 +31,11 @@ function calculate_age(dob) {
   return age;
 }
 
+const params = qs.parse(window.location.search);
+
 const smart = fhir.client({
   serviceUrl: "https://fhir-open-api-dstu2.smarthealthit.org",
-  patientId: "1137192"
+  patientId: params.cns || "1137192"
 });
 
 const pt = smart.patient.read();
