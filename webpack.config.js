@@ -10,7 +10,7 @@ var isProduction = function () {
   return process.env.NODE_ENV === 'production';
 };
 
-module.exports = {
+var config = {
   target: 'web',
   cache: true,
   entry: {
@@ -63,3 +63,16 @@ module.exports = {
     historyApiFallback: true
   }
 };
+
+if (isProduction()) {
+  config.plugins = config.plugins.concat([
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    })
+  ]);
+}
+
+module.exports = config;
