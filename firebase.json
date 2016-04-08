@@ -1,0 +1,9 @@
+{
+  "firebase": "risco-cardiaco",
+  "public": "tmp",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
