@@ -5,8 +5,6 @@ class Results extends Component {
   constructor() {
     super();
 
-    this.width = 980;
-    this.height = 330;
     this.start_x = 30;
     this.start_y = 25;
   }
@@ -63,11 +61,8 @@ class Results extends Component {
     s.text(rect_x, rect_y, 'Alto').attr({'font-size': '12px', 'font-weight': 'normal', 'fill': '#555'});
     s.text(rect_x, rect_y + 10, '240+').attr({'font-size': '10px', 'font-weight': '200', 'fill': '#888'});
 
-    s.path('M' + cap_x     + ' ' + cap_y +
-           'L' + cap_mid_x + ' ' + cap_mid_y +
-           'L' + cap_end_x + ' ' + cap_end_y +
-           'z')
-           .attr({'fill': '#5E892B', 'stroke': 'none'});
+    s.path(`M${cap_x} ${cap_y} L${cap_mid_x} ${cap_mid_y} L${cap_end_x} ${cap_end_y} z`)
+      .attr({'fill': '#5E892B', 'stroke': 'none'});
 
     const circle_x = (unit_w * (tcl / 10)) + x;
     s.circle(circle_x, y, 22).attr({'fill': '#F4804E', 'stroke': '#fff', 'stroke-width': '2px'});
@@ -125,10 +120,7 @@ class Results extends Component {
     s.text(rect_x, rect_y, 'Muito alto').attr({'font-size': '12px', 'font-weight': 'normal', 'fill': '#555'});
     s.text(rect_x, rect_y + 10, '190+').attr({'font-size': '10px', 'font-weight': '200', 'fill': '#888'});
 
-    s.path('M' + cap_x     + ' ' + cap_y +
-           'L' + cap_mid_x + ' ' + cap_mid_y +
-           'L' + cap_end_x + ' ' + cap_end_y +
-           'z')
+    s.path(`M${cap_x} ${cap_y} L${cap_mid_x} ${cap_mid_y} L${cap_end_x} ${cap_end_y} z`)
            .attr({'fill': '#5E892B', 'stroke': 'none'});
 
     const circle_x = (unit_w * (ldl / 10)) + x;
@@ -173,10 +165,7 @@ class Results extends Component {
     s.text(rect_x, rect_y, 'Protetor').attr({'font-size': '12px', 'font-weight': 'normal', 'fill': '#555'});
     s.text(rect_x, rect_y + 10, '60+').attr({'font-size': '10px', 'font-weight': '200', 'fill': '#888'});
 
-    s.path('M' + cap_x     + ' ' + cap_y +
-           'L' + cap_mid_x + ' ' + cap_mid_y +
-           'L' + cap_end_x + ' ' + cap_end_y +
-           'z')
+    s.path(`M${cap_x} ${cap_y} L${cap_mid_x} ${cap_mid_y} L${cap_end_x} ${cap_end_y} z`)
            .attr({'fill': '#5E892B', 'stroke': 'none'});
 
     const circle_x = (unit_w * (hdl / 10)) + x;
@@ -188,7 +177,7 @@ class Results extends Component {
     return (
       <div className='row'>
         <h2><span className='num'>2</span>Seus resultados</h2>
-        <svg id='holder' width={this.width} height={this.height}></svg>
+        <svg id='holder' viewBox='0 0 760 320'></svg>
       </div>
     );
   }
