@@ -23,20 +23,22 @@ class AditionalParameters extends Component {
 
     return (
       <div className='column params'>
-        <label>
-          <input type='checkbox' defaultChecked={trtbp} onChange={this.onHypertensionTreatmentChange} />
-          Faz tratamento de hipertensão?
-        </label><br/>
-        <label>
-          <input type='checkbox' defaultChecked={smoker} onChange={this.onSmokerChange} />
-          Fumante habitual?
-        </label><br/>
-        <label>
-          <input type='checkbox' defaultChecked={diabetes} onChange={this.onDiabetesChange} />
-          Tem diabetes?
-        </label><br/>
-        <input type='text' id='sbp' defaultValue={sbp} onChange={this.onSistolicBloodPressureChange} />
-        <label htmlFor='sbp'>Pressão arterial sistólica</label>
+        <div className='check'>
+          <input id='ht' type='checkbox' defaultChecked={trtbp} onChange={this.onHypertensionTreatmentChange} />
+          <label htmlFor='ht'>Faz tratamento de hipertensão?</label>
+        </div>
+        <div className='check'>
+          <input id='smk' type='checkbox' defaultChecked={smoker} onChange={this.onSmokerChange} />
+          <label htmlFor='smk'>Fumante habitual?</label>
+        </div>
+        <div className='check'>
+          <input id='dbt' type='checkbox' defaultChecked={diabetes} onChange={this.onDiabetesChange} />
+          <label htmlFor="dbt">Tem diabetes?</label>
+        </div>
+        <div>
+          <input type='number' id='sbp' min='10' max='200' defaultValue={sbp} onChange={this.onSistolicBloodPressureChange} />
+          <label htmlFor='sbp'>Pressão arterial sistólica</label>
+        </div>
       </div>
     );
   }
