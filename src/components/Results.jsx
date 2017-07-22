@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Snap from 'snapsvg-cjs';
+import Snap from 'snapsvg';
 
 class Results extends Component {
   constructor() {

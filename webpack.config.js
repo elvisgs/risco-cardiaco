@@ -26,10 +26,6 @@ var config = {
     extensions: ['', '.js', '.jsx', '.sass', '.scss'],
     modulesDirectories: ['node_modules', 'src']
   },
-  externals: {
-    jquery: 'jQuery',
-    jsdom: 'jsdom' // fix fhir-client error
-  },
 
   module: {
     loaders: [
@@ -45,6 +41,10 @@ var config = {
       {
         test: /\.(jpg|png)$/,
         loader: 'url?limit=5000'
+      },
+      {
+        test: require.resolve('snapsvg'),
+        loader: 'imports-loader?this=>window,fix=>module.exports=0'
       }
     ]
   },
